@@ -69,4 +69,14 @@ resource "aws_instance" "app_instance"{
 
 ### Create a varible to hide a sensative information
 
-You can create a variable in order to hide a sensative
+You can create a variable in order to hide a sensative information, such is IP address, AMI id etc.
+For that:
+1. Create a new file `variable.tf`
+2. Create a variable following this format:
+`
+variable "<name>"{
+    default = "<value>"
+}
+`
+3. Add this file to `.gitignore`
+4. Inside your `main.tf` file replace the value with a variable, for example: `ami = var.ami_id`
