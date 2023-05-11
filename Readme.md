@@ -80,3 +80,8 @@ variable "<name>"{
 `
 3. Add this file to `.gitignore`
 4. Inside your `main.tf` file replace the value with a variable, for example: `ami = var.ami_id`
+
+
+## Create a Hybrid infrastructure with a VPC
+
+![Hybrid diagram](resources/TerraformHybrid.JPG)
