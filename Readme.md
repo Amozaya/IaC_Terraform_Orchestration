@@ -43,7 +43,8 @@ provider "aws" {
 
 resource "aws_instance" "app_instance"{
         # which ami to use
-        ami = "ami-id"
+        #ami = "ami-id"
+        ami = var.ami_id
 
         #type of instance
         instance_type = "t2.micro"
@@ -65,3 +66,7 @@ resource "aws_instance" "app_instance"{
 6. Use `terraform apply` to launch the instance
 7. Check AWS to ensure that instance is running
 8. You can use `terraform detsroy` in order to shut down EC2
+
+### Create a varible to hide a sensative information
+
+You can create a variable in order to hide a sensative
