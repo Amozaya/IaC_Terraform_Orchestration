@@ -43,7 +43,7 @@ provider "aws" {
 
 resource "aws_instance" "app_instance"{
         # which ami to use
-        ami = "ami-064b12715525b93e0"
+        ami = "ami-id"
 
         #type of instance
         instance_type = "t2.micro"
