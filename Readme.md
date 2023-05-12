@@ -219,6 +219,14 @@ resource "aws_security_group" "tech221_oleg_AppSG" {
   }
 
   ingress {
+    description      = "SSH"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = [var.my_ip]
+  }
+
+  ingress {
     description      = "port3000"
     from_port        = 3000
     to_port          = 3000
@@ -261,6 +269,9 @@ resource "aws_instance" "app_instance"{
         # Add security groups
 
 	security_groups = ["${aws_security_group.tech221_oleg_AppSG.id}"]
+
+  # Add key file
+  key_name = var.pem_key
 
 	# what would you like to name it
 	tags = {

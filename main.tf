@@ -130,14 +130,14 @@ resource "aws_security_group" "tech221_oleg_AppSG" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  #ingress {
-    #description      = "SSH"
-    #from_port        = 22
-    #to_port          = 22
-    #protocol         = "tcp"
-    #cidr_blocks      = ["0.0.0.0/0"]
+  ingress {
+    description      = "SSH"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = [var.my_ip]
     #ipv6_cidr_blocks = ["::/0"]
-  #}
+  }
 
   ingress {
     description      = "port3000"
@@ -151,7 +151,7 @@ resource "aws_security_group" "tech221_oleg_AppSG" {
   egress {
     from_port        = 0
     to_port          = 0
-    protocol         = "-1"
+    protocol         = "-1" # allow all
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
@@ -180,6 +180,9 @@ resource "aws_instance" "app_instance"{
 	# Add security groups
 
 	security_groups = ["${aws_security_group.tech221_oleg_AppSG.id}"]
+
+  # Add key file
+  key_name = var.pem_key
 
 	# what would you like to name it
 	tags = {
